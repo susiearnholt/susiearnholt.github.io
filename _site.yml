@@ -5,3 +5,5 @@ navbar:
   left:
     - text: "Home Page"
       href: index.html
+    - text: "Resources"
+      href: resources.html
