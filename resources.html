@@ -11,7 +11,7 @@
 
 
 
-<title>resources</title>
+<title>Resources</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +19,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-1.1/highlight.js"></script>
@@ -161,6 +164,107 @@ $(document).ready(function () {
 
 
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -193,33 +297,192 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">resources</h1>
+<h1 class="title toc-ignore">Resources</h1>
 
 </div>
 
 
-<div id="r-markdown" class="section level2">
-<h2>R Markdown</h2>
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
-<pre class="r"><code>summary(cars)</code></pre>
-<pre><code>##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00</code></pre>
+<div id="r" class="section level3">
+<h3><img src="./images/r.png" /><!-- --> R</h3>
+<ul>
+<li><a href="http://www.r-project.org/">R homepage</a></li>
+<li><a href="http://cran.r-project.org/">Download R</a></li>
+<li><a href="http://www.statmethods.net/index.html">Quick R (all types of examples)</a></li>
+<li><a href="http://cran.r-project.org/doc/manuals/r-release/R-intro.html">An Introduction to R</a></li>
+<li><a href="https://bookdown.org/rdpeng/rprogdatascience/"><em>R Programming for Data Science</em> by Roger D. Peng</a></li>
+<li><a href="https://bookdown.org/rdpeng/exdata/"><em>Exploratory Data Analysis with R</em> by Roger D. Peng</a></li>
+<li><a href="https://bookdown.org/csgillespie/efficientR/"><em>Efficient R programming</em> by Colin Gillespie and Robin Lovelace</a></li>
+<li><a href="http://adv-r.had.co.nz/"><em>Advanced R Development</em> by Hadley Wickham</a></li>
+<li><a href="https://bookdown.org/Tazinho/Advanced-R-Solutions/"><em>Advanced R Solutions</em> by Malte Grosser and Henning Bumann</a></li>
+<li><a href="http://www.brodrigues.co/fput/"><em>Functional Programming and Unit Testing for Data Munging with R</em></a></li>
+<li><a href="http://nathanieldphillips.com/thepiratesguidetor/">YaRrr! The Pirate’s Guide to R by Nathaniel D. Phillips</a></li>
+<li><a href="http://bit.ly/UC5UDc">Roger Peng’s Computing for Data Analysis Videos</a></li>
+<li><a href="http://flavioazevedo.com/stats-and-r-blog/2016/9/13/learning-r-on-youtube">Learning Statistics/R on youtube</a></li>
+<li><a href="https://www.datacamp.com/home">DataCamp</a></li>
+<li><a href="https://www.codeschool.com/courses/try-r">Free Code School intro R Course</a></li>
+<li><a href="http://swirlstats.com">swirl</a> “swirl teaches you R programming and data science interactively, at your own pace, and right in the R console”</li>
+</ul>
 </div>
-<div id="including-plots" class="section level2">
-<h2>Including Plots</h2>
-<p>You can also embed plots, for example:</p>
-<p><img src="resources_files/figure-html/pressure-1.png" width="672" /></p>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
+<div id="rstudio" class="section level3">
+<h3><img src="./images/rstudio.jpg" /><!-- --> RStudio</h3>
+<ul>
+<li><a href="https://mathr.math.appstate.edu/">ASU RStudio Server</a></li>
+<li><a href="http://rstudio.org/">RStudio (IDE)</a></li>
+<li><a href="https://www.rstudio.com/ide/download/preview">RStudio (IDE) preview relase</a></li>
+<li><a href="https://support.rstudio.com/hc/en-us/categories/200035113-Documentation">RStudio Documentation</a></li>
+<li><a href="https://www.rstudio.com/resources/cheatsheets/">RStudio Cheat Sheets</a></li>
+<li><a href="https://www.rstudio.com/rviews/2016/11/11/easy-tricks-you-mightve-missed/">RStudio Easy Tricks for V1.0</a></li>
+</ul>
+</div>
+<div id="data-camp" class="section level3">
+<h3><img src="./images/DataCamp.png" /><!-- --> Data Camp</h3>
+<ul>
+<li><a href="https://www.datacamp.com/courses/tech:r">Data Science Courses Using R</a></li>
+<li><a href="https://www.datacamp.com/courses/tech:python">Data Science Courses Using Python</a></li>
+</ul>
+</div>
+<div id="graphics" class="section level3">
+<h3><img src="./images/ggplot2.png" /><!-- --> Graphics</h3>
+<ul>
+<li><a href="http://www.r-graph-gallery.com/">The <code>R</code> Graph Gallery</a></li>
+<li><a href="http://docs.ggplot2.org/current/"><code>ggplot2</code> documentation</a></li>
+<li><a href="http://ggplot2.org/"><code>ggplot2</code> Main Page</a></li>
+<li><a href="http://ggplot2.org/book/"><code>ggplot2</code> Book</a></li>
+<li><a href="http://www.cookbook-r.com/Graphs/">Cookbook for R</a></li>
+<li><a href="http://lmdvr.r-forge.r-project.org/figures/figures.html">Lattice: Multivariate Data Visualization with R - Figures and code</a></li>
+<li><a href="http://shinyapps.stat.ubc.ca/r-graph-catalog/">Graph Catalog <code>ggplot2</code></a></li>
+<li><a href="https://www.rstudio.com/resources/webinars/the-grammar-and-graphics-of-data-science/">The Grammar and Graphics of Data Science (Video)</a> (58:50)</li>
+<li><a href="https://cpsievert.github.io/plotly_book/"><code>plotly</code> for R</a></li>
+<li><a href="https://www.datacamp.com/community/open-courses/plotly-tutorial-plotly-and-r">Plotly tutorial: Plotly and R</a></li>
+<li><a href="https://bookdown.org/paulcbauer/idv2/"><em>Interactive Data Visualization (2nd Day)</em> by Paul C. Bauer and Richard Traunmüller</a></li>
+</ul>
+</div>
+<div id="shiny-apps" class="section level3">
+<h3><img src="./images/shiny.png" /><!-- --> Shiny Apps</h3>
+<ul>
+<li><a href="http://shiny.rstudio.com/">Shiny</a></li>
+<li><a href="https://shinyapps.io">shinyapps.io server</a></li>
+<li><a href="http://docs.rstudio.com/shinyapps.io/">Shiny Apps Documentation</a></li>
+<li><a href="https://www.rstudio.com/resources/cheatsheets/">Shiny Cheatsheet</a></li>
+<li><a href="http://stat545.com/shiny01_activity.html">Building Shiny Apps</a></li>
+<li><a href="https://alanarnholt.shinyapps.io/norm_area2/">Normal Distribution Calculator (running on RStudio Shiny Apps server)</a></li>
+<li><a href="http://alanarnholt.com/shiny/NormalApp/">Normal Distribution Calculator (running on Alan’s Droplet)</a></li>
+<li><a href="http://alanarnholt.com/shiny/NormApp3/">Normal Distribution Calculator (with more features running on Alan’s Droplet)</a></li>
+<li><a href="http://alanarnholt.com/shiny/SamplingDist/">Sampling Distributions (running on Alan’s Droplet)</a></li>
+<li><a href="http://deanattali.com/2015/05/09/setup-rstudio-shiny-server-digital-ocean/">How to get your very own RStudio Server and Shiny Server with DigitalOcean</a></li>
+</ul>
+</div>
+<div id="r-package-building" class="section level3">
+<h3><img src="./images/devtools.png" /><!-- --> R Package Building</h3>
+<ul>
+<li><a href="http://r-pkgs.had.co.nz/"><em>R Packages</em> by Hadley Wickham</a></li>
+<li><a href="https://bookdown.org/rdpeng/RProgDA/"><em>Mastering Software Development in R</em> by Roger D. Peng, Sean Kross, and Brooke Anderson</a></li>
+<li><a href="http://hafen.github.io/packagedocs/"><code>packagedocs</code></a></li>
+<li><a href="https://hadley.github.io/pkgdown/"><code>pkgdown</code></a></li>
+</ul>
+</div>
+<div id="using-dplyr" class="section level3">
+<h3><img src="./images/dplyr.png" /><!-- --> Using <a href="https://cran.r-project.org/web/packages/dplyr/index.html"><code>dplyr</code></a></h3>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html">Introduction to <code>dplyr</code> vignette</a></li>
+<li><a href="http://www.dataschool.io/dplyr-tutorial-for-faster-data-manipulation-in-r/"><code>dplyr</code> video1-tutorial</a></li>
+<li><a href="http://www.dataschool.io/dplyr-tutorial-part-2/"><code>dplyr</code> video2-tutorial</a></li>
+</ul>
+</div>
+<div id="reproducible-analysis" class="section level3">
+<h3><img src="./images/knitr.png" /><!-- -->Reproducible Analysis</h3>
+<ul>
+<li><a href="http://yihui.name/knitr/"><code>knitr</code> Homepage</a></li>
+<li><a href="https://github.com/yihui/knitr"><code>knitr</code> Package Development on GitHub</a></li>
+<li><a href="https://bookdown.org/yihui/bookdown/"><em>Bookdown: Authoring Books with R Markdown</em> by Yihui Xie</a></li>
+<li><a href="https://github.com/christophergandrud/Rep-Res-Book"><em>Reproducible Research with</em> R/RStudio Development on GitHub</a></li>
+<li><a href="http://cran.r-project.org/web/views/ReproducibleResearch.html">CRAN views of Reproducible Analysis</a></li>
+<li><a href="https://www.rstudio.com/resources/webinars/reproducible-reporting/">Reproducible Reporting (Video)</a> (58:03)</li>
+<li><a href="https://ismayc.github.io/rbasics-book/"><em>Getting used to R, RStudio, and R Markdown</em> by Chester Ismay</a></li>
+<li><a href="https://ismayc.github.io/thesisdown_book/index.html"><em>My Final College Paper</em> by Chester Ismay</a></li>
+</ul>
+</div>
+<div id="r-markdown" class="section level3">
+<h3><img src="./images/rmarkdown.png" /><!-- --> R Markdown</h3>
+<ul>
+<li><a href="http://rmarkdown.rstudio.com">R Markdown V2</a></li>
+<li><a href="https://support.rstudio.com/hc/en-us/sections/200149716-R-Markdown">Using R Markdown</a></li>
+<li><a href="https://www.rstudio.com/resources/webinars/getting-started-with-r-markdown/">Getting started with R Markdown (Video)</a> (1:02:44)</li>
+<li><a href="http://daringfireball.net/projects/markdown/">Markdown</a></li>
+</ul>
+</div>
+<div id="creating-slides-with-r" class="section level3">
+<h3><img src="./images/rmarkdown.png" /><!-- --> Creating Slides with R</h3>
+<ul>
+<li><a href="http://rmarkdown.rstudio.com/ioslides_presentation_format.html#overview">R Markdown - ioslides, reveal.js, Slidy, and Beamer</a></li>
+<li><a href="https://github.com/yihui/xaringan"><code>xaringan</code></a></li>
+<li><a href="https://support.rstudio.com/hc/en-us/sections/200130218-R-Presentations">R Presentations</a></li>
+</ul>
+</div>
+<div id="git" class="section level3">
+<h3><img src="./images/git.jpg" /><!-- --> Git</h3>
+<ul>
+<li><a href="http://happygitwithr.com/"><em>Happy Git and GitHub for the useR</em> by Jenny Bryan and the STAT 545 TAs</a></li>
+<li><a href="http://git-scm.com">Download Git</a></li>
+<li><a href="https://help.github.com/">GitHub Help Page</a></li>
+<li><a href="https://www.atlassian.com/git/tutorial">Git Tutorials (bitbucket)</a></li>
+<li><a href="http://gitimmersion.com/lab_03.html">Create a Project</a></li>
+<li><a href="http://www.ndpsoftware.com/git-cheatsheet.html">Git Cheatsheet</a></li>
+<li><a href="https://www.codeschool.com/courses/try-git">Free Code School Intro to Git</a></li>
+<li><a href="http://git-scm.com/book">Pro Git Book</a></li>
+<li><a href="http://try.github.io/levels/1/challenges/1">Try Git on GitHub</a></li>
+<li><a href="http://www.pgbovine.net/git-tutorial.htm">Phillip Guo’s Basic Git and Github tutorials (Three tutorials about 10 minutes each)</a></li>
+<li><a href="https://www.youtube.com/watch?v=YxZ8J2rqhEM">Clone a GitHub Repo with RStudio (Video)</a> (5:05)</li>
+<li><a href="https://github.com/alanarnholt/Homework-Examples/blob/master/Slides/ForkCloneRStudio.pdf">Clone a GitHub Repo with RStudio (Slides)</a></li>
+<li><a href="https://www.rstudio.com/resources/webinars/collaboration-and-time-travel-version-control-with-git-github-and-rstudio/">Collaboration and time travel: version control with git, github and RStudio (Video)</a> (48:56)</li>
+</ul>
+</div>
+<div id="using-unix-like-commands" class="section level3">
+<h3><img src="./images/linux2.png" /><!-- --> Using Unix Like Commands</h3>
+<ul>
+<li><a href="http://web.mit.edu/mprat/Public/web/Terminus/Web/main.html">Play Terminus to learn basics of the shell</a></li>
+<li><a href="http://www.pgbovine.net/command-line-tutorial.htm">Phillip Guo’s Unix-like command line tutorials (Four tutorials about 10 minutes each)</a></li>
+<li><a href="http://www.ee.surrey.ac.uk/Teaching/Unix/">Michael Stonebank’s Unix Tutorial for Beginners</a></li>
+</ul>
+</div>
+<div id="data-science" class="section level3">
+<h3>Data Science</h3>
+<ul>
+<li><a href="http://r4ds.had.co.nz/"><em>R for Data Science</em> by Garrett Grolemund and Hadley Wickham</a></li>
+<li><a href="https://ismayc.github.io/moderndiver-book/"><em>A MODERN DIVE into Data with R</em> by Chester Ismay and Albert Y. Kim</a></li>
+<li><a href="http://tidytextmining.com/"><em>Tidy Text Mining with R</em> by Julia Silge and David Robinson</a></li>
+<li><a href="http://togaware.com/onepager/">OnePageR</a></li>
+</ul>
+</div>
+<div id="latex" class="section level3">
+<h3><span class="math inline">\(\LaTeX\)</span></h3>
+<ul>
+<li><a href="http://tug.org/mactex/">Download LaTeX for Macs (TeXLive)</a></li>
+<li><a href="http://miktex.org/">Download LaTeX for Windows (MikTeX)</a></li>
+<li><a href="http://www.ctan.org/pkg/math-into-latex-4">More Math into LaTeX</a></li>
+<li><a href="http://www.tug.org/begin.html">Getting started with LaTeX</a></li>
+<li><a href="http://en.wikipedia.org/wiki/LaTeX">LaTeX Wikipedia</a></li>
+<li><a href="http://detexify.kirelabs.org/classify.html">Clever help finding LaTeX symbols</a></li>
+</ul>
+</div>
+<div id="zotero" class="section level3">
+<h3>Zotero</h3>
+<ul>
+<li><a href="https://stat-ata-asu.github.io/STT2810HonorsClassRepo/RMarkdown/ZoteroInClass.html">Using Zotero</a></li>
+</ul>
+</div>
+<div id="other-interesting-stuff" class="section level3">
+<h3>Other Interesting Stuff</h3>
+<ul>
+<li><a href="http://r-bloggers.com">R-bloggers</a></li>
+<li><a href="http://blog.revolutionanalytics.com/2014/01/john-chambers-recounts-the-history-of-s-and-r.html">John Chambers recounts the history of S and R</a></li>
+</ul>
 </div>
 
 
 
+</div>
+</div>
 
 </div>
 
