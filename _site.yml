@@ -1,0 +1,7 @@
+name: "my-website"
+output_dir: "."
+navbar:
+  title: "Susie Arnholt"
+  left:
+    - text: "Home Page"
+      href: index.html
